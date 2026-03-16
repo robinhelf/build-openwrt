@@ -21,6 +21,7 @@ on:
           - Lienol-master
       
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   FEEDS_CONF: config/${{ inputs.source_branch }}/feeds.conf.default
   CONFIG_FILE: config/${{ inputs.source_branch }}/config-x86
   DIY_P1_SH: config/${{ inputs.source_branch }}/diy-part1.sh
@@ -43,7 +44,8 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          docker rmi `docker images -q`
+          run: |
+          docker images -q | xargs -r docker rmi 2>/dev/null || true
           [[ -n "${AGENT_TOOLSDIRECTORY}" ]] && sudo rm -rf "${AGENT_TOOLSDIRECTORY}"
           sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android 2>/dev/null
           sudo -E apt-get -y update
