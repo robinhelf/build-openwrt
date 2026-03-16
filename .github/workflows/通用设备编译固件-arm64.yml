@@ -21,6 +21,7 @@ on:
           - Lienol-master
       
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   FEEDS_CONF: config/${{ inputs.source_branch }}/feeds.conf.default
   CONFIG_FILE: config/${{ inputs.source_branch }}/config-arm64
   DIY_P1_SH: config/${{ inputs.source_branch }}/diy-part1.sh
