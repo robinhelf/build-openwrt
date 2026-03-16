@@ -41,6 +41,8 @@ jobs:
 
       - name: Create swap file
         run: |
+          sudo swapoff /swapfile 2>/dev/null || true
+          sudo rm -f /swapfile    2>/dev/null || true
           sudo fallocate -l 2G /swapfile
           sudo chmod 600 /swapfile
           sudo mkswap /swapfile
