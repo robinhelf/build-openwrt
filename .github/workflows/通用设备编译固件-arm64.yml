@@ -28,6 +28,10 @@ env:
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: false
+  DEVICE_NAME: ""
+  FILE_DATE: ""
   TZ: Asia/Shanghai
 
 jobs:
@@ -38,6 +42,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+
+      # ... 其他步骤保持不变，但应用上述修改 ...
 
       - name: Create swap file
         run: |
