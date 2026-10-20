@@ -19,7 +19,7 @@ on:
           - lede-master
           - immortalwrt-master
           - Lienol-master
-
+          - fanchmwrt
       
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -84,6 +84,10 @@ jobs:
               REPO_URL="https://github.com/Lienol/openwrt"
               REPO_BRANCH="22.03"
               TAGS_NAME="Lienol"
+          elif [[ "${{ inputs.source_branch }}" == *"fanchmwrt"* ]]; then
+              REPO_URL="https://github.com/fanchmwrt/fanchmwrt"
+              REPO_BRANCH="fanchmwrt-25.12.6"
+              TAGS_NAME="fanchmwrt"
           else
               echo "Unknown source code repository."
               exit 1
